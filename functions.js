@@ -12,11 +12,15 @@ const getSavedTodos = () => {
     }
 }
 
-const renderTodos = (todos) => {
+const renderTodos = (todos, searchText) => {
+
+    const filteredTodos = todos.filter((todo) => {
+        return todo.title.toLowerCase().includes(searchText.toLowerCase())
+    }) 
 
     document.querySelector('#todo-list').innerHTML = ''
 
-    todos.forEach((todo) => {
+    filteredTodos.forEach((todo) => {
         document.querySelector('#todo-list').appendChild(generateTodoDOM(todo))
     })
 }
@@ -34,7 +38,7 @@ const generateTodoDOM = function (todo) {
     checkbox.addEventListener('change', (e) => {
         toggleTodo(todo.title)
         saveTodos(todos)
-        renderTodos(todos)
+        renderTodos(todos, searchText)
     })
 
     //Setup todo text
@@ -47,7 +51,7 @@ const generateTodoDOM = function (todo) {
     removeButton.addEventListener('click', () => {
         removeTodo(todo.title)
         saveTodos(todos)
-        renderTodos(todos)
+        renderTodos(todos, searchText)
     })
 
     return todoEl
@@ -67,4 +71,8 @@ const toggleTodo = (title) => {
     if (todo) {
         todo.completed = !todo.completed
     }
+}
+
+const sortAlpha = (todos, filters) => {
+    
 }

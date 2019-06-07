@@ -1,6 +1,8 @@
  const todos = getSavedTodos() 
 
- renderTodos(todos)
+ let searchText = '';
+
+ renderTodos(todos, searchText)
 
 document.querySelector('#new-todo-form').addEventListener('submit', function (e) {
     e.preventDefault()
@@ -10,9 +12,15 @@ document.querySelector('#new-todo-form').addEventListener('submit', function (e)
     })
     e.target.elements.text.value = ''
     saveTodos(todos)
-    renderTodos(todos)
+    renderTodos(todos, searchText)
 })
 
-// document.querySelector('#hide-checkbox').addEventListener('change', () => {
+document.querySelector('#search-todos').addEventListener('input', (e) => {
+    searchText = e.target.value
+    renderTodos(todos, searchText)
+})
 
-// })
+
+//Sort alphabetically even when filtered
+//sort by date created
+//sort by completed
