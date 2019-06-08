@@ -73,6 +73,21 @@ const toggleTodo = (title) => {
     }
 }
 
-const sortAlpha = (todos, filters) => {
-    
+const compare = function(a, b) {
+    const titleA = a.title.toLowerCase()
+    const titleB = b.title.toLowerCase()
+
+    let comparison = 0
+    if (titleA > titleB) {
+        comparison = 1
+    } else if (titleA < titleB) {
+        comparison = -1
+    }
+
+    return comparison
+
+
 }
+
+
+

@@ -1,4 +1,4 @@
- const todos = getSavedTodos() 
+ let todos = getSavedTodos() 
 
  let searchText = '';
 
@@ -19,6 +19,29 @@ document.querySelector('#search-todos').addEventListener('input', (e) => {
     searchText = e.target.value
     renderTodos(todos, searchText)
 })
+
+
+document.querySelector('#alpha-checkbox').addEventListener('change', (e) => {
+
+    const alphaTodos = todos.sort(compare)
+    todos = getSavedTodos()
+    
+
+    if (e.target.checked) {
+        renderTodos(alphaTodos, searchText)
+    } else {
+        renderTodos(todos, searchText)
+     }
+    
+})
+
+console.log(todos)
+
+
+
+
+
+
 
 
 //Sort alphabetically even when filtered
