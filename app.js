@@ -5,6 +5,7 @@
  renderTodos(todos, searchText)
 
 document.querySelector('#new-todo-form').addEventListener('submit', function (e) {
+    console.log(e.target.elements.text);
     e.preventDefault()
     todos.push({
         title: e.target.elements.text.value,
