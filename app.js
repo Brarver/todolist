@@ -23,17 +23,14 @@ document.querySelector('#search-todos').addEventListener('input', (e) => {
 
 
 document.querySelector('#alpha-checkbox').addEventListener('change', (e) => {
-
-    const alphaTodos = todos.sort(compare)
-    todos = getSavedTodos()
-    
+    const newTodos = todos.slice()
+    const alphaTodos = newTodos.sort(compare)
 
     if (e.target.checked) {
         renderTodos(alphaTodos, searchText)
     } else {
         renderTodos(todos, searchText)
      }
-    
 })
 
 console.log(todos)
