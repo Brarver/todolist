@@ -45,6 +45,19 @@ document.querySelector('#time-checkbox').addEventListener('change', (e) => {
      }
 })
 
+document.querySelector('#hide-checkbox').addEventListener('change', (e) => {
+    const newTodos = todos.filter(todo => {
+        return !todo.completed
+    })
+
+    if (e.target.checked) {
+        renderTodos(newTodos, searchText)
+    } else {
+        renderTodos(todos, searchText)
+     }
+
+})
+
 
 
 
