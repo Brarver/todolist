@@ -9,7 +9,8 @@ document.querySelector('#new-todo-form').addEventListener('submit', function (e)
     e.preventDefault()
     todos.push({
         title: e.target.elements.text.value,
-        completed: false
+        completed: false,
+        created: moment()
     })
     e.target.elements.text.value = ''
     saveTodos(todos)
@@ -33,7 +34,16 @@ document.querySelector('#alpha-checkbox').addEventListener('change', (e) => {
      }
 })
 
-console.log(todos)
+document.querySelector('#time-checkbox').addEventListener('change', (e) => {
+    const newTodos = todos.slice()
+    const byTimeTodos = newTodos.sort(sortTime)
+
+    if (e.target.checked) {
+        renderTodos(byTimeTodos, searchText)
+    } else {
+        renderTodos(todos, searchText)
+     }
+})
 
 
 
@@ -42,6 +52,5 @@ console.log(todos)
 
 
 
-//Sort alphabetically even when filtered
-//sort by date created
+
 //sort by completed

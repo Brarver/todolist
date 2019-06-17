@@ -30,6 +30,7 @@ const generateTodoDOM = function (todo) {
     const checkbox = document.createElement('input')
     const todoText = document.createElement('span')
     const removeButton = document.createElement('button')
+    const timeStamp = document.createElement('span')
     
     //Setup todo checkbox
     checkbox.setAttribute('type', 'checkbox')
@@ -53,6 +54,10 @@ const generateTodoDOM = function (todo) {
         saveTodos(todos)
         renderTodos(todos, searchText)
     })
+
+    //Setup time stamp
+    timeStamp.textContent = `created ${moment(todo.created).fromNow()}` 
+    todoEl.appendChild(timeStamp)
 
     return todoEl
 }
@@ -85,9 +90,18 @@ const compare = function(a, b) {
     }
 
     return comparison
-
-
 }
 
+const sortTime = function(a, b) {
+    const titleA = a.created
+    const titleB = b.created
 
+    let comparison = 0
+    if (titleA < titleB) {
+        comparison = 1
+    } else if (titleA > titleB) {
+        comparison = -1
+    }
 
+    return comparison
+}
