@@ -5,16 +5,17 @@
  renderTodos(todos, searchText)
 
 document.querySelector('#new-todo-form').addEventListener('submit', function (e) {
-    console.log(e.target.elements.text);
     e.preventDefault()
+    const timestamp = moment().valueOf()
     todos.push({
         title: e.target.elements.text.value,
         completed: false,
-        created: moment()
+        created: timestamp
     })
     e.target.elements.text.value = ''
     saveTodos(todos)
     renderTodos(todos, searchText)
+    console.log(todos)
 })
 
 document.querySelector('#search-todos').addEventListener('input', (e) => {
