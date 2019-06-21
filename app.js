@@ -27,6 +27,7 @@ document.querySelector('#search-todos').addEventListener('input', (e) => {
 document.querySelector('#alpha-checkbox').addEventListener('change', (e) => {
     const newTodos = todos.slice()
     const alphaTodos = newTodos.sort(compare)
+    
 
     if (e.target.checked) {
         renderTodos(alphaTodos, searchText)
@@ -46,6 +47,10 @@ document.querySelector('#time-checkbox').addEventListener('change', (e) => {
      }
 })
 
+const hideCheckbox = document.querySelector('#hide-checkbox')
+
+// hideCheckbox.addEventListener('')
+
 document.querySelector('#hide-checkbox').addEventListener('change', (e) => {
     const newTodos = todos.filter(todo => {
         return !todo.completed
@@ -57,7 +62,19 @@ document.querySelector('#hide-checkbox').addEventListener('change', (e) => {
         renderTodos(todos, searchText)
      }
 
+     
 })
+
+console.log(hideCheckbox.value)
+
+var div1 = document.getElementById("d1");
+var text_field = document.getElementById("t");
+
+text_field.value = div1.nodeName;
+
+
+
+
 
 
 
